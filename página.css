@@ -12,4 +12,22 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
-#
+.block-footer {
+    background-color: #1860e2;
+    border-color: #080fef;
+    color: white;
+    margin: 15px;
+    fill: 15px;
+    border-style: solid;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+}
+
+@media screen {
+    .block-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
