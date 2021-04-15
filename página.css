@@ -18,11 +18,17 @@ p {
     color: white;
     margin: 15px;
     fill: 15px;
+    margin-top: 5%;
     border-style: solid;
     border-top-width: 10px;
     border-bottom-width: 10px;
     border-left-width: 10px;
     border-right-width: 10px;
+}
+.centr{
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 @media screen {
