@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+
+    <script type="text/javascript" src="js/bootstrap.esm.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+
+    <title>El Tablazo</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="página.html">
+                <img src="https://scontent.fpnq11-1.fna.fbcdn.net/v/t1.6435-9/39913122_515824752202657_6842692804511006720_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=xdtBaaERw7EAX-u6iWy&_nc_ht=scontent.fpnq11-1.fna&oh=40c589db3fa53bac6f96965fbdf3c7e3&oe=609CB060"
+                    alt="Logo"> El tablazo
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nuestrosproductos.html">Nuestros Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quienesSomos.html">Quienes somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactanos.html">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lol">Trabaja con nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="place-time">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-12 col-lg-6 pl-0 pr-0">
+                    <img src="img/tablaDulce.jpg" alt="tablaDulce" />
+                </div>
+
+                <div class=" col-12 col-lg-6 pt-4 pb-4 ">
+                    <form action="procesar.php" method="POST" id="formulario">
+                        <div class="mb-3">
+                            <label for="run" class="form-label">Run</label>
+                            <input type="number" class="form-control" id="run" placeholder="12345678-9">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Pedro Pablo Perez Pereira">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">edad</label>
+                            <input type="number" class="form-control" id="edad" placeholder="99">
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+                        </div>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Motivo</option>
+                        <option value="1">Consulta</option>
+                        <option value="2">Reclamo</option>
+                        <option value="3">Sugerencia</option>
+                        <option value="4">Otro</option>
+                      </select>
+                        <div class="mb-3">
+                            <label for="comentario" class="form-label">Comentario:</label>
+                            <textarea class="form-control" id="comentario" rows="3"></textarea>
+                        </div>
+                        </p>
+                        <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+                        <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
+                        <div id="error" class="alert alert-danger" role="alert"></div>
+                    </form>
+                    <div class="col text-center ">
+                        <a class="btn btn-primary " href="página.html " role="button ">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#error').hide();
+
+            $('#formulario').submit(function(event) {
+                var mensaje = "";
+
+                if ($('#nombre').val().trim().length == 0) {
+                    mensaje = "El nombre está en blanco";
+                }
+
+                if ($('#email').val().trim().length == 0) {
+                    mensaje = "El email está en blanco";
+                }
+
+                if (mensaje != "") {
+                    $('#error').html(mensaje);
+                    $('#error').show();
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- /Header -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <LINK REL=StyleSheet HREF="página.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="productos.css" TYPE="text/css" MEDIA=screen>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+        -->
+</body>
+
+</html>
