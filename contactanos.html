@@ -107,14 +107,27 @@
 
             $('#formulario').submit(function(event) {
                 var mensaje = "";
-
+                if ($('#run').val().trim().length == 0) {
+                    mensaje = "El run está en blanco";
+                }
                 if ($('#nombre').val().trim().length == 0) {
                     mensaje = "El nombre está en blanco";
                 }
-
+                if ($('#edad').val().trim().length == 0) {
+                    mensaje = "edad está en blanco";
+                }
                 if ($('#email').val().trim().length == 0) {
                     mensaje = "El email está en blanco";
                 }
+
+                if ($('#motivo').val().trim().length == 0) {
+                    mensaje = "motivo está en blanco";
+                }
+                if ($('#comentario').val().trim().length == 0) {
+                    mensaje = "El comentario está en blanco";
+                }
+
+
 
                 if (mensaje != "") {
                     $('#error').html(mensaje);
