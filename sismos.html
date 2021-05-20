@@ -103,7 +103,7 @@
 
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Magnitud</th>
                     <th scope="col">Ubicacion</th>
@@ -122,18 +122,19 @@
                     $.each(data.ultimos_sismos, function (i, item) {
                         var fila;
                         fila = "<tr>" +
-                            "<td>" + item.state + "</td>" +
-                            
+
+                            "<td>" + i + "</td>" +
                             "<td>" + item.utc_time + "</td>" +
                             "<td>" + item.magnitude + "</td>" +
-                            "<td>" + item.reference + "</td>" 
-                            "</tr>";
+                            "<td>" + item.reference + "</td>"
+                        "</tr>";
 
                         $("#tabla").append(fila);
                     });
                 });
             });
         });
+        
     </script>
     <!-- Fin tabla -->
 
