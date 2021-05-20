@@ -60,30 +60,36 @@
                     <form action="procesar.php" method="POST" id="formulario">
                         <div class="mb-3">
                             <label for="run" class="form-label">Run</label>
-                            <input type="number" class="form-control" id="run" placeholder="12345678-9">
+                            <input type="number" class="form-control" id="run" placeholder="12345678-9" required>
                         </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Pedro Pablo Perez Pereira">
+                            <input type="text" class="form-control" id="nombre" placeholder="Pedro Pablo Perez Pereira" required>
                         </div>
                         <div class="mb-3">
-                            <label for="edad" class="form-label">edad</label>
-                            <input type="number" class="form-control" id="edad" placeholder="99">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" placeholder="99" required>
                         </div>
                         <div class="mb-3">
                             <label for="correo" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+                            <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com" required>
                         </div>
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Motivo</option>
+                        <div class="mb-3">
+                            <label for="numero telefono" class="form-label">Teléfono</label>
+                            <input type="telefono" class="form-control" id="telefono" placeholder="+569 98765432">
+                        </div>
+                        <div>
+                            <label for="motivo">Motivo</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" placeholder="motivo" required>
                         <option value="1">Consulta</option>
                         <option value="2">Reclamo</option>
                         <option value="3">Sugerencia</option>
                         <option value="4">Otro</option>
-                      </select>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="comentario" class="form-label">Comentario:</label>
-                            <textarea class="form-control" id="comentario" rows="3"></textarea>
+                            <textarea class="form-control" id="comentario" rows="3" placeholder="Todo bien?" required></textarea>
                         </div>
                         </p>
                         <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
@@ -107,7 +113,7 @@
 
             $('#formulario').submit(function(event) {
                 var mensaje = "";
-                if ($('#run').val().trim().length == 0) {
+                if ($('#run').val().trim().length == 7) {
                     mensaje = "El run está en blanco";
                 }
                 if ($('#nombre').val().trim().length == 0) {
@@ -118,6 +124,9 @@
                 }
                 if ($('#email').val().trim().length == 0) {
                     mensaje = "El email está en blanco";
+                }
+                if ($('#telefono').val().trim().length == 0) {
+                    mensaje = "El telefono está en blanco";
                 }
 
                 if ($('#motivo').val().trim().length == 0) {
