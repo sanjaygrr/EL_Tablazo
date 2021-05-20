@@ -149,14 +149,12 @@
             $("#enviar").click(function() {
                 const telefono = document.getElementById("telefono").value
                 const correo = document.getElementById("correo").value
-                if (telefono.value != '' && correo.value == '') {
-
+                if (telefono != '' && correo == '') {
                     correo.removeAtrr('required')
-
-                } else if (telefono.value == '' && correo.value != '') {
+                } else if (telefono == '' && correo != '') {
                     telefono.removeAtrr('required')
 
-                } else if (telefono.value == '' && correo.value == '') {
+                } else if (telefono == '' && correo == '') {
                     alert("Elige correo o telefono")
                 } else {
                     return
