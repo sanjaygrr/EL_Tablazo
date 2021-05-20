@@ -30,6 +30,9 @@ p {
     margin-left: 5%;
     margin-right: 5%;
 }
+.btn_buscar{
+    text-align: right;
+}
 
 @media screen {
     .block-footer {
