@@ -44,7 +44,7 @@
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sismos.html" >Sismos</a>
+                        <a class="nav-link" href="sismos.html">Sismos</a>
                     </li>
                 </ul>
             </div>
@@ -60,35 +60,35 @@
                 </div>
 
                 <div class=" col-12 col-lg-6 pt-4 pb-4 ">
-                    <form action="procesar.php" method="POST" id="formulario">
+                    <form action="" method="POST" id="formulario">
                         <div class="row mb-3">
                             <label for="run" class="col-sm-2 col-form-label">Run: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="run" minlength="7">
+                                <input type="text" class="form-control" id="run" minlength="7" placeholder="Ingrese Rut sin digito verificador" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="nombre" class="col-sm-2 col-form-label">Nombre: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nombre" required>
+                                <input type="text" class="form-control" id="nombre" placeholder="Pedro Pablo Perez Pereira" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="edad" class="col-sm-2 col-form-label">Edad: </label>
                             <div class="col-sm-10">
-                                <input type="number" min="18" max="110" class="form-control" id="edad" required>
+                                <input type="number" min="18" max="110" class="form-control" placeholder="99" id="edad" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="email" class="col-sm-2 col-form-label">Correo: </label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="correo" required>
+                                <input type="email" class="form-control" id="correo" placeholder="Ejemplo@Ejemplo.com" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="telefono" class="col-sm-2 col-form-label">Teléfono: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="telefono" maxlength="12" required>
+                                <input type="text" class="form-control" id="telefono" maxlength="12" placeholder="+56987654321" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -105,12 +105,12 @@
 
                         <div class="mb-3">
                             <label for="comentario" class="form-label">Comentario:</label>
-                            <textarea class="form-control" id="comentario" rows="7" placeholder="Todo bien?" maxlength="500" required></textarea>
+                            <textarea class="form-control" id="comentario" rows="7" placeholder="¿Qué sucede realmente?" maxlength="500" required></textarea>
                         </div>
 
                         </p>
-                        <input type="submit" class="btn btn-danger" id="enviar" value="Enviar" href="/">
-                        <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
+                        <button class="btn btn-danger" id="enviar" type="submit">Enviar</button>
+                        <button class="btn btn-primary" id="limpiar" type="reset">Limpiar</button>
                         <div id="error" class="alert alert-danger" role="alert"></div>
                     </form>
                     <div class="col text-center ">
@@ -131,25 +131,61 @@
             $("#telefono").unbind();
         });
         $(document).ready(function() {
-            $("#obtener").click(function() {
-                $.get("https://api.libreapi.cl/rut/digit?rut=15995476", function(data) {
-                    $("#valorUF").html("$" + data.uf.valor);
-                });
+            $("#run").blur(function(event) {
+                const run = document.getElementById("run").value
+                $.get(`https://api.libreapi.cl/rut/digit?rut=${run}`, function(data) {
+                    console.log("llamada rut", data)
+                    alert("Rut Valido")
+                    $("#run").html("$" + data.run);
+                }).error(function(error) {
+                    console.log("error")
+                    alert("Ingresa un Rut Válido!! ")
+                })
             });
         });
 
-        function validarInputs() {
-            const telefono = document.getElementById("telefono")
-            const correo = document.getElementById("correo")
 
-            if (telefono.value = true) {
-                correo.required = false
-            } else if (correo.value = true) {
-                telefono.required = false
-            } else {
-                alert("Debes ingresar telefono o Correo!")
-            }
-        }
+        $(document).ready(function() {
+            $("#enviar").click(function() {
+                const telefono = document.getElementById("telefono").value
+                const correo = document.getElementById("correo").value
+                if (telefono.value != '' && correo.value == '') {
+
+                    correo.removeAtrr('required')
+
+                } else if (telefono.value == '' && correo.value != '') {
+                    telefono.removeAtrr('required')
+
+                } else if (telefono.value == '' && correo.value == '') {
+                    alert("Elige correo o telefono")
+                } else {
+                    return
+                }
+            })
+        })
+
+
+        /*                    if (telefono = '') {
+                        correo.removeAtrr("required")
+                    } else if (correo = '') {
+                        telefono.removeAtrr("required")
+                    } else {
+                        alert("Debes ingresar telefono o Correo!")
+                    }
+                })
+            })*/
+        /*   function validarInputs() {
+               const telefono = document.getElementById("telefono")
+               const correo = document.getElementById("correo")
+
+               if (telefono.value != 0) {
+                   correo.required = false
+               } else if (correo.value != 0) {
+                   telefono.required = false
+               } else {
+                   alert("Debes ingresar telefono o Correo!")
+               }
+           }*/
     </script>
 
 
