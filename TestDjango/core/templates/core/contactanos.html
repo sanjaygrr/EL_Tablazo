@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.min.css'%}">
 
 
-    <script type="text/javascript" src="js/bootstrap.esm.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'core/css/bootstrap.esm.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'core/css/jquery-3.6.0.min.js'%}"></script>
 
     <title>El Tablazo</title>
 </head>
@@ -57,7 +57,7 @@
             <div class="row">
 
                 <div class="col-12 col-lg-6 pl-0 pr-0">
-                    <img src="img/tablaDulce.jpg" alt="tablaDulce" />
+                    <img src="{% static 'core/img/tablaDulce.jpg'%}" alt="tablaDulce" />
                 </div>
 
                 <div class=" col-12 col-lg-6 pt-4 pb-4 ">
@@ -163,44 +163,15 @@
             })
         })
 
-
-        /*                    if (telefono = '') {
-                        correo.removeAtrr("required")
-                    } else if (correo = '') {
-                        telefono.removeAtrr("required")
-                    } else {
-                        alert("Debes ingresar telefono o Correo!")
-                    }
-                })
-            })*/
-        /*   function validarInputs() {
-               const telefono = document.getElementById("telefono")
-               const correo = document.getElementById("correo")
-
-               if (telefono.value != 0) {
-                   correo.required = false
-               } else if (correo.value != 0) {
-                   telefono.required = false
-               } else {
-                   alert("Debes ingresar telefono o Correo!")
-               }
-           }*/
     </script>
 
-
-
-
-
-
-
-
-    <!-- /Header -->
+     <!-- /Header -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <LINK REL=StyleSheet HREF="página.css" TYPE="text/css" MEDIA=screen>
-    <LINK REL=StyleSheet HREF="productos.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="{% static 'core/img/página.css'%}" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="{% static 'core/img/productos.css'%}" TYPE="text/css" MEDIA=screen>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
