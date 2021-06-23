@@ -52,85 +52,104 @@
     </nav>
     <!-- Formulario de Busqueda -->
     <div class="container">
-
-        <p class="text-start">Sismos</p>
-
-        <form action="procesar.php" method="POST" id="formulario">
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <p class="text-start">Limite:</p>
-                        <input type="number" class="form-control" id="Magn" placeholder="0" min="0" max="20">
-                    </div>
+        <h3>Sismos</h3>
+        <div class="row">
+            <div class="col-12">
+            <form>
+                <div class="form-group">
+                    <label for="limit">límite:</label>
+                    <input type="number" class="form-control" id="limit">
                 </div>
+                <!-- btn buscar -->
+                <button type="button" class="btn btn-primary float-right" id="buscar">Buscar</button>
+                <!-- btn buscar -->
+            </form>
             </div>
-            <!-- btn buscar -->
-
-            <div class="Btn_buscar">
-                <!-- <input type="submit" class="btn btn-primary" id="buscar" value="Buscar"> -->
-                <button type="button" class="btn btn-primary" id="buscar">Buscar</button>
-
-            </div>
-
-            <!-- btn buscar -->
-
-            <!-- <div id="error" class="alert alert-danger" role="alert"></div> -->
-        </form>
-
+        </div>
     </div>
+
     <!-- Fin Formulario Busqueda -->
 
     <!-- Contenedor Ultimo sismo -->
     <div class="container">
-        <div class="col text-center ">
-            <div class="conte">
-
-                <p class="text-start">Ultimo Sismo</p>
-                <p class="text-start">Fecha:</p>
-                <p class="text-start">Magnitud:</p>
-                <p class="text-start">Ubicacion:</p>
-
+        <br>
+            <div class="card text-end">
+                <div class="card-body">
+                    <h3 class="card-title">Último sismo</h3>
+                    <p class="card-text">Fecha: <span class="font-weight-bold" id="fecha"></span></p>
+                    <p class="card-text">Magnitud: <span class="font-weight-bold" id="magnitud"></span></p>
+                    <p class="card-text">Ubicacion: <span class="font-weight-bold" id="ubicacion"></span></p>
+                </div>
             </div>
-        </div>
+        <br>
     </div>
-    <!-- Fin Contenedor -->
+    <!-- Fin Contenedor Ultimo sismo-->
 
     <!-- Tabla de Sismos -->
     <div class="container">
-        <table class="table table-dark table-striped" id="tabla">
-            <p class="text-start">Sismos anteriores</p>
-
-            <thead>
-                <tr>
-                    <th scope="col"></th>
+        <h3>Sismos anteriores</h3>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Magnitud</th>
-                    <th scope="col">Ubicacion</th>
-                </tr>
-            </thead>
-
-            <tbody></tbody>
-        </table>
+                    <th scope="col">Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl"></tbody>
+            </table>
+        </div>
     </div>
 
     <script>
-        $(document).ready(function() {
-            $("#buscar").click(function() {
-                $.get("https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function(data) {
-                    $.each(data.ultimos_sismos, function(i, item) {
-                        var fila;
-                        fila = "<tr>" +
+        $(document).ready(function () {
+          $("#buscar").click(function(){
+            var valid = true;
+            var param = {
+              user: "demo",
+              select : "ultimos_sismos"
+            };
 
-                            "<td>" + i + "</td>" +
-                            "<td>" + item.utc_time + "</td>" +
-                            "<td>" + item.magnitude + "</td>" +
-                            "<td>" + item.reference + "</td>"
-                        "</tr>";
+            var limit = $("#limit").val();
 
-                        $("#tabla").append(fila);
-                    });
+            $("#fecha").html("");
+            $("#magnitud").html("");
+            $("#ubicacion").html("");
+            $("#tbl").empty();
+
+            if (limit != "" && limit<=0){
+              valid = false;
+              alert("Debe ingresar número mayor cero");
+            }else if (limit > 20){
+              valid = false;
+              alert("Es posible mostrar solo 20 sismos");
+            }
+
+            if (valid) {
+              $.get("https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function (data) {
+                $.each(data.ultimos_sismos, function (i, item) {
+                  var fila;
+                  if (i == 0){
+                    $("#fecha").html(item.chilean_time);
+                    $("#magnitud").html(item.magnitude);
+                    $("#ubicacion").html(item.reference);
+                    
+                  }else if ((i + 1 <= limit || limit.trim().length == 0)) {
+                    fila = "<tr>" +
+                      "<td>" + (i) + "</td>" +
+                      "<td>" + item.chilean_time + "</td>" +
+                      "<td>" + item.magnitude + "</td>" +
+                      "<td>" + item.reference + "</td>" +
+                      "</tr>";
+
+                    $("#tbl").append(fila);
+                  }
                 });
-            });
+              });
+            }
+          });
         });
     </script>
     <!-- Fin tabla -->
@@ -142,21 +161,10 @@
         </div>
     </div>
     <!--Fin Boton volver-->
-
-
+ 
     <LINK REL=StyleSheet HREF="página.css" TYPE="text/css" MEDIA=screen>
     <LINK REL=StyleSheet HREF="productos.css" TYPE="text/css" MEDIA=screen>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            $("#buscar")
-
-
-
-        })
-    </script>
 </body>
 
 </html>
