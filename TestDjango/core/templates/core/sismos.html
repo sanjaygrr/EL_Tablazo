@@ -1,21 +1,21 @@
-<!doctype html>
-<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.min.css'%}">
 
+    <script type="text/javascript" src="{% static 'core/js/bootstrap.esm.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'core/js/jquery-3.6.0.min.js'%}"></script>
 
-    <script type="text/javascript" src="js/bootstrap.esm.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-
-    <title>El Tablazo</title>
+    <title>Sismos</title>
 </head>
 
 <body>
-    <!-- Header -->
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="página.html">
@@ -44,109 +44,139 @@
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sismos.html" >Sismos</a>
+                        <a class="nav-link" href="sismos.html">Sismos</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-    <!--Carrusel-->>
-
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/delivery 1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="img/delivery 2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="img/delivery 3.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <!--Fin del Carrusel-->>
-
-
-    <!--Contenedor ejemplo de bootstrap-->>
+    <!-- Formulario de Busqueda -->
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="img/tablaDulce.jpg" class="card-img-top" height="300" width="450">
-                    <div class="centerTextContenedor"><br>
-                        <h3 style="text-align: center;">Tabla 1 : Dulce</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
-                        <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
-                        </div>
-                    </div>
+        <h1>Sismos</h1>
+        <div class="row">
+            <div class="col-12">
+            <form>
+                <div class="form-group">
+                    <label for="limit">límite:</label>
+                    <input type="number" class="form-control" id="limit">
                 </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="img/tablaSalada.webp" class="card-img-top" height="300" width="450">
-                    <div class="centerTextContenedor"><br>
-                        <h3 style="text-align: center;">Tabla 2 : Salada</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
-                        <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="img/tablaMixta.jpg" class="card-img-top" height="300" width="450">
-                    <div class="centerTextContenedor"><br>
-                        <h3 style="text-align: center;">Tabla 3 : Mixta</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
-                        <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
-                        </div>
-                    </div>
-                </div>
+                <!-- btn buscar -->
+                    <br>
+                    <button type="button" class="btn btn-primary float-right" id="buscar">Buscar</button>
+                <!-- btn buscar -->
+            </form>
             </div>
         </div>
     </div>
 
-    <div class='block-footer'>
-        <div class='text'>Mis ofertas:</div>
+    <!-- Fin Formulario Busqueda -->
+
+    <!-- Contenedor Ultimo sismo -->
+    <div class="container">
+        <br>
+            <h3>Ultimo Sismo</h3>
+            <div class="card text-end">
+                <div class="card-body">
+                    <p class="card-text">Fecha: <span class="font-weight-bold" id="fecha"></span></p>
+                    <p class="card-text">Magnitud: <span class="font-weight-bold" id="magnitud"></span></p>
+                    <p class="card-text">Ubicacion: <span class="font-weight-bold" id="ubicacion"></span></p>
+                </div>
+            </div>
+        <br>
+    </div>
+    <!-- Fin Contenedor Ultimo sismo-->
+
+    <!-- Tabla de Sismos -->
+    <div class="container">
+        <h3>Sismos anteriores</h3>
+        <div class="row">
+            <table class="table table-dark table-striped" id="tabla">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Magnitud</th>
+                    <th scope="col">Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl"></tbody>
+            </table>
+        </div>
     </div>
 
+    <script>
+        $(document).ready(function () {
+          $("#buscar").click(function(){
+            var valid = true;
+            var param = {
+              user: "demo",
+              select : "ultimos_sismos"
+            };
 
-    <br>
-    <br>
+            var limit = $("#limit").val();
 
+            $("#fecha").html("");
+            $("#magnitud").html("");
+            $("#ubicacion").html("");
+            $("#tbl").empty();
 
+            if (limit != "" && limit<=0){
+              valid = false;
+              alert("Debe ingresar número mayor cero");
+            }else if (limit > 20){
+              valid = false;
+              alert("Es posible mostrar solo 20 sismos");
+            }
 
+            if (valid) {
+              $.get("https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function (data) {
+                $.each(data.ultimos_sismos, function (i, item) {
+                  var fila;
+                  if (i == 0){
+                    $("#fecha").html(item.chilean_time);
+                    $("#magnitud").html(item.magnitude);
+                    $("#ubicacion").html(item.reference);
+                    
+                  }else if ((i + 1 <= limit || limit.trim().length == 0)) {
+                    fila = "<tr>" +
+                      "<td>" + (i) + "</td>" +
+                      "<td>" + item.chilean_time + "</td>" +
+                      "<td>" + item.magnitude + "</td>" +
+                      "<td>" + item.reference + "</td>" +
+                      "</tr>";
 
+                    $("#tbl").append(fila);
+                  }
+                });
+              });
+            }
+          });
+        });
+    </script>
+    <!-- Fin tabla -->
 
-
-    <!-- /Header -->
+    <!-- Boton de volver -->
+    <div class="container">
+        <div class="col text-center ">
+            <a class="btn btn-primary " href="página.html " role="button ">Volver</a>
+        </div>
+    </div>
+    <!--Fin Boton volver-->
+    
+  <!-- /Header -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <LINK REL=StyleSheet HREF="página.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="{% static 'core/img/página.css'%}" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="{% static 'core/img/productos.css'%}" TYPE="text/css" MEDIA=screen>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+        -->
 </body>
 
 </html>
