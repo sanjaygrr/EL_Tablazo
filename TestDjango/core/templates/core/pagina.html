@@ -18,8 +18,8 @@
     <!-- Header -->
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="página.html">
-                <img src="% static 'core/img/descarga.jpg'%" alt="Logo"> El tablazo
+            <a class="navbar-brand" href="">
+                <img src="{% static 'core/img/descarga.jpg'%}"alt="Logo"> El tablazo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,13 +28,13 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="nuestrosproductos.html">Nuestros Productos</a>
+                        <a class="nav-link" href="productos">Nuestros Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="quienesSomos.html">Quienes somos</a>
+                        <a class="nav-link" href="informacion">Quienes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contactanos.html">Contáctanos</a>
+                        <a class="nav-link" href="contacto">Contáctanos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#lol">Trabaja con nosotros</a>
@@ -43,14 +43,14 @@
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sismos.html">Sismos</a>
+                        <a class="nav-link" href="sismos" >Sismos</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!--Carrusel-->>
+    <!--Carrusel-->
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -74,19 +74,19 @@
         </button>
     </div>
 
-    <!--Fin del Carrusel-->>
+    <!--Fin del Carrusel-->
 
-    <!--Contenedor ejemplo de bootstrap-->>
+    <!--Contenedor ejemplo de bootstrap-->
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{% static 'core/img/tablaDulce.jpg'%}" class="card-img-top" height="300" width="450">
+                    <img src="{% static 'core/img/tablaDulce.jpg'%}"class="card-img-top" height="300" width="450">
                     <div class="centerTextContenedor"><br>
                         <h3 style="text-align: center;">Tabla 1 : Dulce</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <h3 style="text-align: center;">Tabla 2 : Salada</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <h3 style="text-align: center;">Tabla 3 : Mixta</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="nuestrosproductos.html" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <LINK REL=StyleSheet HREF="{% static 'core/css/página.css'%}" TYPE="text/css" MEDIA=screen>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
