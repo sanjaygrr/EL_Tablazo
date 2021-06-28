@@ -7,7 +7,7 @@ def contacto(request):
 def productos(request):
   return render(request,'core/nuestrosproductos.html')
 
-def home(request):
+def pagina(request):
   return render(request,'core/pagina.html')
 
 def informacion(request):
@@ -15,3 +15,9 @@ def informacion(request):
 
 def sismos(request):
   return render(request,'core/sismos.html')
+
+def cliente(request):
+  return render(request,'core/clientes.html')
+
+def form_cliente(request):
+  return render(request,'core/cliente_formulario.html')
