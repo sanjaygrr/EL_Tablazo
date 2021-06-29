@@ -18,7 +18,7 @@
     <!-- Header -->
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{% url 'pagina' %}">
                 <img src="{% static 'core/img/descarga.jpg'%}"alt="Logo"> El tablazo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,22 +28,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="productos">Nuestros Productos</a>
+                        <a class="nav-link" href="{% url 'productos' %}">Nuestros Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="informacion">Quienes somos</a>
+                        <a class="nav-link" href="{% url 'informacion' %}">Quienes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto">Contáctanos</a>
+                        <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cliente">Trabaja con nosotros</a>
+                        <a class="nav-link" href="{% url 'cliente' %}">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sismos" >Sismos</a>
+                        <a class="nav-link" href="{% url 'sismos' %}" >Sismos</a>
                     </li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@
                         <h3 style="text-align: center;">Tabla 1 : Dulce</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <h3 style="text-align: center;">Tabla 2 : Salada</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <h3 style="text-align: center;">Tabla 3 : Mixta</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="productos" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>

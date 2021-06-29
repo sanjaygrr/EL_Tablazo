@@ -18,7 +18,7 @@
     <!-- Header -->
      <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{% url 'pagina' %}">
                 <img src="{% static 'core/img/descarga.jpg'%}"alt="Logo"> El tablazo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,22 +28,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="productos">Nuestros Productos</a>
+                        <a class="nav-link" href="{% url 'productos' %}">Nuestros Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="informacion">Quienes somos</a>
+                        <a class="nav-link" href="{% url 'informacion' %}">Quienes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto">Contáctanos</a>
+                        <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cliente">Trabaja con nosotros</a>
+                        <a class="nav-link" href="{% url 'cliente' %}">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sismos" >Sismos</a>
+                        <a class="nav-link" href="{% url 'sismos' %}" >Sismos</a>
                     </li>
                 </ul>
             </div>
@@ -67,6 +67,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Contraseña</th>
                         <th scope="col">Pais</th>
+                        <th scope="col">opciones</th>
 
                     </tr>
                 </thead>
@@ -81,6 +82,10 @@
                         <td>{{ve.email}}</td>
                         <td>{{ve.constraseña}}</td>
                         <td>{{ve.pais}}</td>
+                        <td>
+                        <a href="{% url 'cliente_formulario_mod' ve.identificacion %}"><img src="{% static 'core/img/editar.png'%}"alt="editar"></a>
+                        <a href="{% url 'cliente_formulario_mod' ve.identificacion %}"><img src="{% static 'core/img/eliminar.png'%}"alt="eliminar"></a>
+                        </td>
 
                         {% comment %} <td><a class="btn btn-secondary btn-sm" href="{% url 'mod_proveedor' ve.ID %}">Modificar</a></td>
                         <td><a class="btn btn-secondary btn-sm" href="{% url 'form_del_proveedor' ve.ID %}">Eliminar</a></td> {% endcomment %}
@@ -89,7 +94,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-end">
-              <a class="btn btn-primary" href="{% url 'cliente_formulario' %}">Cliente</a> 
+              <a href="{% url 'cliente_formulario' %}"><img src="{% static 'core/img/anadir.png'%}"alt="añadir"></a> 
             </div>
         </div>
               

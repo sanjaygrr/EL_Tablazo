@@ -40,7 +40,28 @@ def form_cliente(request):
          formulario.save()
          data["mensaje"] = "Guardado Correctamente"
       else:
-         data["form"] = formulario
+        #  data["form"] = formulario
+         data["mensaje"] = "Error al Guardar los datos"
 
     return render(request,'core/cliente_formulario.html', data)
   # return render(request,'core/cliente_formulario.html')
+
+
+def form_cliente_mod(request, id):
+    client = Cliente.objects.get(identificacion=id)
+
+    data = { 
+     'form': CLiente_form(instance=client)
+    }
+
+    if request.method == 'POST':
+      formulario = CLiente_form(data=request.POST,instance=client)
+      if formulario.is_valid():
+         formulario.save()
+         data["mensaje"] = "Modificado Correctamente"
+      else:
+        #  data["form"] = formulario
+         data["mensaje"] = "Error al Modificar los datos"
+
+    return render(request,'core/cliente_formulario_mod.html', data)
+  
