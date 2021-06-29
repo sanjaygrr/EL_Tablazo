@@ -1,9 +1,8 @@
-# from TestDjango.core.models import Cliente
-# from TestDjango.core.forms import CLiente_form
-# from TestDjango.core.models import Cliente
 from django.http import request
 from django.shortcuts import render
 from .models import Cliente
+from .forms import CLiente_form
+
 
 # Create your views here.
 def contacto(request):
@@ -31,13 +30,17 @@ def cliente(request):
 
 
 def form_cliente(request):
-  # datos = { 
-  #   'form':CLiente_form()
-  # }
-  # if request.method == 'POST':
-  #   formulario = CLiente_form(request.POST)
-  #   if formulario.is_valid:
-  #     formulario.save()
-  #     datos['mensaje'] = "Guardados Correctamente"
-  #return render(request,'core/cliente_formulario.html',datos)
-  return render(request,'core/cliente_formulario.html')
+    data = { 
+     'form': CLiente_form()
+    }
+
+    if request.method == 'POST':
+      formulario = CLiente_form(data=request.POST)
+      if formulario.is_valid():
+         formulario.save()
+         data["mensaje"] = "Guardado Correctamente"
+      else:
+         data["form"] = formulario
+
+    return render(request,'core/cliente_formulario.html', data)
+  # return render(request,'core/cliente_formulario.html')
