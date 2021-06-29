@@ -84,7 +84,7 @@
                         <td>{{ve.pais}}</td>
                         <td>
                         <a href="{% url 'cliente_formulario_mod' ve.identificacion %}"><img src="{% static 'core/img/editar.png'%}"alt="editar"></a>
-                        <a href="{% url 'cliente_formulario_mod' ve.identificacion %}"><img src="{% static 'core/img/eliminar.png'%}"alt="eliminar"></a>
+                        <a href="{% url 'cliente_formulario_del' ve.identificacion %}"><img src="{% static 'core/img/eliminar.png'%}"alt="eliminar"></a>
                         </td>
 
                         {% comment %} <td><a class="btn btn-secondary btn-sm" href="{% url 'mod_proveedor' ve.ID %}">Modificar</a></td>

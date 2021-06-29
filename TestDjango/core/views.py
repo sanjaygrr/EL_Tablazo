@@ -1,5 +1,5 @@
 from django.http import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Cliente
 from .forms import CLiente_form
 
@@ -64,4 +64,9 @@ def form_cliente_mod(request, id):
          data["mensaje"] = "Error al Modificar los datos"
 
     return render(request,'core/cliente_formulario_mod.html', data)
+  
+def form_cliente_del(request, id):
+    client = Cliente.objects.get(identificacion=id)
+    client.delete()
+    return redirect(to="cliente")
   
