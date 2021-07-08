@@ -52,9 +52,9 @@
     <div class="container">
         <br>
         <div class="row">
-             <h1>Editar Cliente</h1>
+             <h1>Editar Proveedor</h1>
              <hr>
-             <form action="" class="" method="post">
+             <form action="" id="formulario" method="post">
                    
                 {% csrf_token %} 
                 
@@ -66,8 +66,8 @@
                 <div class="d-flex justify-content-end">
                    <a class="btn btn-secondary " href="{% url 'cliente' %}" role="button ">Volver</a>
                     &nbsp;
-                    <input type="reset" value="Limpiar" class="btn btn-danger" >
-                    &nbsp;
+                    {% comment %} <input type="reset" value="Limpiar" class="btn btn-danger" >
+                    &nbsp; {% endcomment %}
                     <button type="submit" class="btn btn-primary">editar</button>
                     {% comment %} <p><a class="btn btn-secondary" href="{% url 'Cliente' %}">Volver</a></p>  {% endcomment %}
                 </div>

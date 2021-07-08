@@ -38,6 +38,7 @@ def form_cliente(request):
       formulario = CLiente_form(data=request.POST)
       if formulario.is_valid():
          formulario.save()
+         data["form"] = formulario
          data["mensaje"] = "Guardado Correctamente"
       else:
         #  data["form"] = formulario
