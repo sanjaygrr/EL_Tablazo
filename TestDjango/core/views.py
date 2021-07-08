@@ -49,14 +49,14 @@ def form_cliente(request):
 
 
 def form_cliente_mod(request, id):
-    client = Cliente.objects.get(identificacion=id)
+    cliente = Cliente.objects.get(identificacion=id)
 
     data = { 
-     'form': CLiente_form(instance=client)
+     'form': CLiente_form(instance=cliente)
     }
 
     if request.method == 'POST':
-      formulario = CLiente_form(data=request.POST,instance=client)
+      formulario = CLiente_form(data=request.POST,instance=cliente)
       if formulario.is_valid():
          formulario.save()
          data["mensaje"] = "Modificado Correctamente"
