@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Cliente(models.Model):
-    identificacion = models.IntegerField(primary_key=True, verbose_name="Id de Usario")
+    identificacion = models.AutoField(primary_key=True, verbose_name="Id de Usario")
     telefono = models.CharField ( max_length=12, verbose_name="telefono" ) 
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     email = models.EmailField(max_length=50, verbose_name="email")

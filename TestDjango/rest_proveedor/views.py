@@ -26,3 +26,31 @@ def lista_proveedor(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+def detalle_proveedor(request, id):
+    """
+    get, update, delete de un proveedor en particular
+    """
+    try:
+        proveedor = Proveedor.objects.get(identificacion = id)
+    except Proveedor.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProveedorSerializer(proveedor)
+        return Response(serializer.data)        
+    if request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = ProveedorSerializer(proveedor, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(serializer.data) 
+    elif request.method == 'DELETE':
+        proveedor.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
