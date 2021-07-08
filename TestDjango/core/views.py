@@ -59,8 +59,8 @@ def form_cliente_mod(request, id):
       if formulario.is_valid():
          formulario.save()
          data["mensaje"] = "Modificado Correctamente"
+         data["form"] = formulario
       else:
-        #  data["form"] = formulario
          data["mensaje"] = "Error al Modificar los datos"
 
     return render(request,'core/cliente_formulario_mod.html', data)
