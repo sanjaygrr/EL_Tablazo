@@ -1,19 +1,27 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
+
+#Modelo para Proveedor
+
 class Pais(models.Model):
-    pais = models.IntegerField(primary_key=True, verbose_name="Id de Pais")
-    nombrePais = models.CharField(max_length=50, verbose_name="Nombre del Pais")
+    idPais = models.IntegerField(primary_key=True, verbose_name="Id de pais")
+    nombrePais = models.CharField(max_length=50, verbose_name="Nombre del pais")
 
     def __str__(self):
         return self.nombrePais
-class Cliente(models.Model):
-    identificacion = models.AutoField(primary_key=True, verbose_name="Id de Usario")
-    telefono = models.CharField ( max_length=12, verbose_name="telefono" ) 
-    nombre = models.CharField(max_length=50, verbose_name="Nombre")
-    email = models.EmailField(max_length=50, verbose_name="email")
-    constraseña = models.CharField(max_length=50, verbose_name="Constraseña")
-    pais =  models.ForeignKey(Pais, on_delete=models.CASCADE)
+
+class Proveedor(models.Model):
+    Identificacion = models.CharField(max_length=9, primary_key=True, verbose_name="Número de identificación")
+    Nombre = models.CharField(max_length=50, verbose_name="Nombre completo")
+    Telefono = models.CharField(max_length=12, null=True, blank=True, verbose_name="Teléfono")
+    Direccion = models.CharField(max_length=100, null=True, blank=True, verbose_name="Dirección")
+    Correo = models.CharField(max_length=50, null=True, blank=True, verbose_name="Correo")
+    Contraseña = models.CharField(max_length=12, null=True, blank=True, verbose_name="Contraseña")
+    Pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = "Proveedores"
 
     def __str__(self):
-        return self.nombre
+        return self.Identificacion

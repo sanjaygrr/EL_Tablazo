@@ -1,7 +1,10 @@
 from rest_framework import serializers
-from core.models import Cliente
+from core.models import Proveedor
 
 class ProveedorSerializer(serializers.ModelSerializer):
+
+    
     class Meta:
-        model = Cliente
-        fields = '__all__'
+        model = Proveedor
+        fields = ['Identificacion', 'Nombre', 'Telefono', 'Direccion', 'Correo', 'Contraseña', 'Pais']
+

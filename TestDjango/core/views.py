@@ -1,73 +1,76 @@
-from django.http import request
 from django.shortcuts import redirect, render
-from .models import Cliente
-from .forms import CLiente_form
+from core.forms import ProveedoresForm
+from .models import Proveedor
 
 
 # Create your views here.
-def contacto(request):
-  return render(request,'core/contactanos.html')
-
-def productos(request):
-  return render(request,'core/nuestrosproductos.html')
-
 def pagina(request):
-  return render(request,'core/pagina.html')
-
-def informacion(request):
-  return render(request,'core/quienesSomos.html')
-
-def sismos(request):
-  return render(request,'core/sismos.html')
-
-def cliente(request):
-    client = Cliente.objects.all()
-    datos = {
-      "client": client
-    }
-    return render(request,'core/clientes.html',datos)
-  #  return render(request,'core/clientes.html')
+    return render(request, 'core/pagina.html')
 
 
-def form_cliente(request):
-    data = { 
-     'form': CLiente_form()
-    }
-
-    if request.method == 'POST':
-      formulario = CLiente_form(data=request.POST)
-      if formulario.is_valid():
-         formulario.save()
-         data["form"] = formulario
-         data["mensaje"] = "Guardado Correctamente"
-      else:
-        #  data["form"] = formulario
-         data["mensaje"] = "Error al Guardar los datos"
-
-    return render(request,'core/cliente_formulario.html', data)
-  # return render(request,'core/cliente_formulario.html')
+def contacto(request):
+    return render(request, 'core/contactanos.html')
 
 
-def form_cliente_mod(request, id):
-    cliente = Cliente.objects.get(identificacion=id)
+def quienesSomos(request):
+    return render(request, 'core/quienesSomos.html')
 
-    data = { 
-     'form': CLiente_form(instance=cliente)
-    }
+
+def nuestrosproductos(request):
+    return render(request, 'core/nuestrosproductos.html')
+
+
+
+
+# Create your views here.
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+        super().__init__()
+
+
+def listado(request):
+    proveedores = Proveedor.objects.all()
+    datos = {"proveedores": proveedores}
+    return render(request, 'core/listado.html', datos)
+
+
+def form_proveedores(request):
+    datos = {'form': ProveedoresForm()}
 
     if request.method == 'POST':
-      formulario = CLiente_form(data=request.POST,instance=cliente)
-      if formulario.is_valid():
-         formulario.save()
-         data["mensaje"] = "Modificado Correctamente"
-         data["form"] = formulario
-      else:
-         data["mensaje"] = "Error al Modificar los datos"
+        formulario = ProveedoresForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Guardados correctamente"
 
-    return render(request,'core/cliente_formulario_mod.html', data)
-  
-def form_cliente_del(request, id):
-    client = Cliente.objects.get(identificacion=id)
-    client.delete()
-    return redirect(to="cliente")
-  
+    return render(request, 'core/form_proveedor.html', datos)
+
+
+def form_mod_proveedor(request, id):
+    # El id es el identificador de la tabla proveedores
+    # Buscamos los datos en la base de datos
+    # Buscamos con el id que llega desde la url
+
+    proveedor = Proveedor.objects.get(Identificacion=id)
+
+    datos = {'form': ProveedoresForm(instance=proveedor)}
+
+    if request.method == 'POST':
+        formulario = ProveedoresForm(request.POST, instance=proveedor)
+        if formulario.is_valid:
+            formulario.save()
+            datos['form'] = formulario
+            datos['mensaje'] = "Modificados correctamente"
+
+    return render(request, 'core/form_mod_proveedor.html', datos)
+
+
+def form_del_proveedor(request, id):
+
+    proveedor = Proveedor.objects.get(Identificacion=id)
+
+    proveedor.delete()
+
+    return redirect(to="listado")

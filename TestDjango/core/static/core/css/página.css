@@ -25,12 +25,19 @@ p {
     border-left-width: 10px;
     border-right-width: 10px;
 }
-.centr{
+
+#imagen_logo {
+    width: 10px;
+    height: 10px;
+}
+
+.centr {
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
 }
-.btn_buscar{
+
+.btn_buscar {
     text-align: right;
 }
 

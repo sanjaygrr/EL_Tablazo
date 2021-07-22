@@ -1,10 +1,11 @@
-from django import forms
 from django.forms import ModelForm
-from .models import Cliente, Pais
+from .models import Proveedor
+from django import forms
 
-class CLiente_form(forms.ModelForm):
-  
-  class Meta:
-     password = forms.CharField(widget=forms.PasswordInput())
-     model = Cliente
-     fields = ['identificacion','telefono','nombre','email','constraseña','pais']
+class ProveedoresForm(ModelForm):
+    Contraseña = forms.CharField(widget=forms.PasswordInput(render_value=True))
+    
+    class Meta:
+        model = Proveedor
+        
+        fields = ['Identificacion', 'Nombre', 'Telefono', 'Direccion', 'Correo', 'Contraseña', 'Pais']

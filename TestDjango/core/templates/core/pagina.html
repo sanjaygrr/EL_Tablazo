@@ -19,7 +19,7 @@
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'pagina' %}">
-                <img src="{% static 'core/img/descarga.jpg'%}"alt="Logo"> El tablazo
+                <img id="imagen_logo" src="{% static 'core/img/descarga.jpg'%}" alt="Logo"> El tablazo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,22 +28,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'productos' %}">Nuestros Productos</a>
+                        <a class="nav-link" href="{% url 'nuestrosproductos' %}">Nuestros Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'informacion' %}">Quienes somos</a>
+                        <a class="nav-link" href="{% url 'quienesSomos' %}">Quienes somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cliente' %}">Trabaja con nosotros</a>
+                        <a class="nav-link" href="{% url 'form_proveedor' %}">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'sismos' %}" >Sismos</a>
+                        <a class="nav-link" href="">Sismos</a>
                     </li>
                 </ul>
             </div>
@@ -81,12 +81,12 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{% static 'core/img/tablaDulce.jpg'%}"class="card-img-top" height="300" width="450">
+                    <img src="{% static 'core/img/tablaDulce.jpg'%}" class="card-img-top" height="300" width="450">
                     <div class="centerTextContenedor"><br>
                         <h3 style="text-align: center;">Tabla 1 : Dulce</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'nuestrosproductos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <h3 style="text-align: center;">Tabla 2 : Salada</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'nuestrosproductos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -110,18 +110,30 @@
                         <h3 style="text-align: center;">Tabla 3 : Mixta</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores praesentium nesciunt veritatis. <br>$9.999</p>
                         <div class="col text-center ">
-                            <a class="btn btn-primary " href="{% url 'productos' %}" role="button ">Ver</a>
+                            <a class="btn btn-primary " href="{% url 'nuestrosproductos' %}" role="button ">Ver</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class='block-footer'>
-        <div class='text'>Mis ofertas:</div>
+    <div class="container" style="background-color: red;">
+        <div class='col' style="padding: 6px; margin:4px;display:inline-block;">
+            <button type="button" class="btn btn-primary " id="obtener ">Dolar</button>
+        </div>
+        <div class="col " style="padding: 4px; margin:4px; display:inline-block; ">
+            <h6 id="valorDolar ">presione</h6>
+        </div>
     </div>
-
+    <script>
+        $(document).ready(function() {
+            $("#obtener ").click(function() {
+                $.get("https://mindicador.cl/api ", function(data) {
+                    $("#valorDolar").html("El valor del dolar es: $ " + data.dolar.valor);
+                })
+            })
+        })
+    </script>
     <br>
     <br>
 
@@ -130,14 +142,14 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <LINK REL=StyleSheet HREF="{% static 'core/css/página.css'%}" TYPE="text/css" MEDIA=screen>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <LINK REL=StyleSheet HREF="{% static 'core/css/página.css'%} " TYPE="text/css " MEDIA=screen>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js " integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf " crossorigin="anonymous "></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js " integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js " integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc " crossorigin="anonymous "></script>
     -->
 </body>
 

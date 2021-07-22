@@ -18,7 +18,7 @@
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'pagina' %}">
-                <img src="{% static 'core/img/descarga.jpg'%}"alt="Logo"> El tablazo
+                <img src="{% static 'core/img/descarga.jpxg'%}" alt="Logo"> El tablazo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,22 +27,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'productos' %}">Nuestros Productos</a>
+                        <a class="nav-link" href="{% url 'nuestrosproductos' %}">Nuestros Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'informacion' %}">Quienes somos</a>
+                        <a class="nav-link" href="{% url 'quienesSomos' %}">Quienes somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cliente' %}">Trabaja con nosotros</a>
+                        <a class="nav-link" href="{% url 'form_proveedor' %}">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#lol" data-toggle="modal" data-target="#modalCompra">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'sismos' %}" >Sismos</a>
+                        <a class="nav-link" href="">Sismos</a>
                     </li>
                 </ul>
             </div>
@@ -53,18 +53,18 @@
         <h1>Sismos</h1>
         <div class="row">
             <div class="col-12">
-            <form>
-                <div class="form-group">
-                    <label for="limit">límite:</label>
-                    <input type="number" class="form-control" id="limit">
-                </div>
-                <!-- btn buscar -->
+                <form>
+                    <div class="form-group">
+                        <label for="limit">límite:</label>
+                        <input type="number" class="form-control" id="limit">
+                    </div>
+                    <!-- btn buscar -->
                     <br>
                     <div class="d-flex justify-content-end">
-                      <button type="button" class="btn btn-primary float-right" id="buscar">Buscar</button>
+                        <button type="button" class="btn btn-primary float-right" id="buscar">Buscar</button>
                     </div>
-               <!-- btn buscar -->
-            </form>
+                    <!-- btn buscar -->
+                </form>
             </div>
         </div>
     </div>
@@ -74,14 +74,14 @@
     <!-- Contenedor Ultimo sismo -->
     <div class="container">
         <br>
-            <h3>Ultimo Sismo</h3>
-            <div class="card text-end">
-                <div class="card-body">
-                    <p class="card-text">Fecha: <span class="font-weight-bold" id="fecha"></span></p>
-                    <p class="card-text">Magnitud: <span class="font-weight-bold" id="magnitud"></span></p>
-                    <p class="card-text">Ubicacion: <span class="font-weight-bold" id="ubicacion"></span></p>
-                </div>
+        <h3>Ultimo Sismo</h3>
+        <div class="card text-end">
+            <div class="card-body">
+                <p class="card-text">Fecha: <span class="font-weight-bold" id="fecha"></span></p>
+                <p class="card-text">Magnitud: <span class="font-weight-bold" id="magnitud"></span></p>
+                <p class="card-text">Ubicacion: <span class="font-weight-bold" id="ubicacion"></span></p>
             </div>
+        </div>
         <br>
     </div>
     <!-- Fin Contenedor Ultimo sismo-->
@@ -93,10 +93,10 @@
             <table class="table table-dark table-striped" id="tabla">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Magnitud</th>
-                    <th scope="col">Ubicación</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Magnitud</th>
+                        <th scope="col">Ubicación</th>
                     </tr>
                 </thead>
                 <tbody id="tbl"></tbody>
@@ -105,52 +105,52 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-          $("#buscar").click(function(){
-            var valid = true;
-            var param = {
-              user: "demo",
-              select : "ultimos_sismos"
-            };
+        $(document).ready(function() {
+            $("#buscar").click(function() {
+                var valid = true;
+                var param = {
+                    user: "demo",
+                    select: "ultimos_sismos"
+                };
 
-            var limit = $("#limit").val();
+                var limit = $("#limit").val();
 
-            $("#fecha").html("");
-            $("#magnitud").html("");
-            $("#ubicacion").html("");
-            $("#tbl").empty();
+                $("#fecha").html("");
+                $("#magnitud").html("");
+                $("#ubicacion").html("");
+                $("#tbl").empty();
 
-            if (limit != "" && limit<=0){
-              valid = false;
-              alert("Debe ingresar número mayor cero");
-            }else if (limit > 20){
-              valid = false;
-              alert("Es posible mostrar solo 20 sismos");
-            }
+                if (limit != "" && limit <= 0) {
+                    valid = false;
+                    alert("Debe ingresar número mayor cero");
+                } else if (limit > 20) {
+                    valid = false;
+                    alert("Es posible mostrar solo 20 sismos");
+                }
 
-            if (valid) {
-              $.get("https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function (data) {
-                $.each(data.ultimos_sismos, function (i, item) {
-                  var fila;
-                  if (i == 0){
-                    $("#fecha").html(item.chilean_time);
-                    $("#magnitud").html(item.magnitude);
-                    $("#ubicacion").html(item.reference);
-                    
-                  }else if ((i + 1 <= limit || limit.trim().length == 0)) {
-                    fila = "<tr>" +
-                      "<td>" + (i) + "</td>" +
-                      "<td>" + item.chilean_time + "</td>" +
-                      "<td>" + item.magnitude + "</td>" +
-                      "<td>" + item.reference + "</td>" +
-                      "</tr>";
+                if (valid) {
+                    $.get("https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function(data) {
+                        $.each(data.ultimos_sismos, function(i, item) {
+                            var fila;
+                            if (i == 0) {
+                                $("#fecha").html(item.chilean_time);
+                                $("#magnitud").html(item.magnitude);
+                                $("#ubicacion").html(item.reference);
 
-                    $("#tbl").append(fila);
-                  }
-                });
-              });
-            }
-          });
+                            } else if ((i + 1 <= limit || limit.trim().length == 0)) {
+                                fila = "<tr>" +
+                                    "<td>" + (i) + "</td>" +
+                                    "<td>" + item.chilean_time + "</td>" +
+                                    "<td>" + item.magnitude + "</td>" +
+                                    "<td>" + item.reference + "</td>" +
+                                    "</tr>";
+
+                                $("#tbl").append(fila);
+                            }
+                        });
+                    });
+                }
+            });
         });
     </script>
     <!-- Fin tabla -->
@@ -162,21 +162,14 @@
         </div>
     </div>
     <!--Fin Boton volver-->
-    
-  <!-- /Header -->
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- /Header -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <LINK REL=StyleSheet HREF="{% static 'core/css/página.css'%}" TYPE="text/css" MEDIA=screen>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
