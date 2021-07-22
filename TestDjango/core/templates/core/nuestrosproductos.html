@@ -51,22 +51,24 @@
     </nav>
     <!--las tablas para los productos-->
     <div class="row" style="text-align: center; background-color: purple; border-color: red; color: white; margin: 0px; fill: 15px; margin-top: 0.5%; margin-bottom: 3%;border-style: solid; border-top-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-right-width: 10px; flex-direction: column; align-items: flex-start;">
+        <section>
+            <div class="row" style="padding: 3px; margin: 2px; ">
+                <button type="button" class="btn btn-info" id="obtener">Dolar</button>
+            </div>
 
-        <div class="col" style="padding: 3px; margin: 2px; display: inline-block;">
-            <button type="button" class="btn btn-info" id="obtener">Dolar</button>
-        </div>
-
-        <div class="col" style="padding: 2px; margin: 2px; display: inline-block;">
-            <h6 id="valorDolar"> Presione el boton "Dolar" para saber el valor actual de este </h6>
-        </div>
+            <div class="container-fluid" style="padding: 2px; margin: 2px; ">
+                <h6 id="valorDolar"> </h6>
+            </div>
 
     </div>
+
+    </section>
 
     <script>
         $(document).ready(function() {
             $("#obtener").click(function() {
                 $.get("https://mindicador.cl/api", function(data) {
-                    $("#valorDolar").html("El valor del dolar es: $" + data.dolar.valor);
+                    $("#valorDolar").html("El dolar esta a: $" + data.dolar.valor);
                 });
             });
         });
