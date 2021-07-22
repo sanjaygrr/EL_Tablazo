@@ -117,23 +117,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="background-color: red;">
-        <div class='col' style="padding: 6px; margin:4px;display:inline-block;">
-            <button type="button" class="btn btn-primary " id="obtener ">Dolar</button>
-        </div>
-        <div class="col " style="padding: 4px; margin:4px; display:inline-block; ">
-            <h6 id="valorDolar ">presione</h6>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $("#obtener ").click(function() {
-                $.get("https://mindicador.cl/api ", function(data) {
-                    $("#valorDolar").html("El valor del dolar es: $ " + data.dolar.valor);
-                })
-            })
-        })
-    </script>
+
     <br>
     <br>
 
